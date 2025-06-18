@@ -12,7 +12,11 @@ const PORT = process.env.PORT || 5000;
 // Pour servir les images statiques :
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Middlewares
-app.use(cors());
+app.use(cors({
+    origin: 'https://www.eventculture.live',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
+}));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
